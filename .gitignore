@@ -17,6 +17,9 @@ settings.py
 # Distribution / packaging
 .Python
 *.ipynb
+.idea/
+.vscode/
+.ipynb_checkpoints/
 venv/
 env/
 build/
