@@ -1,3 +1,5 @@
+
+
 def merge_count_split_inversions(left, right):
     split_inv = 0
     merged = []
@@ -50,5 +52,4 @@ if __name__ == "__main__":
     m, n = sort_count_inversions(x)
 
     print(n)
-    
 
