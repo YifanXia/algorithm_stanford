@@ -11,8 +11,12 @@ settings.py
 # C extensions
 *.so
 
+# text files
+*.txt
+
 # Distribution / packaging
 .Python
+*.ipynb
 venv/
 env/
 build/
