@@ -153,6 +153,6 @@ if __name__ == '__main__':
 
     SCCs = find_SCCs(graph.reverse_list, finished)
     print('There are {} SCCs.'.format(len(SCCs)))
-    print(sorted(SCCs.values(), reverse=True)[0:5])
+    print(sorted(SCCs.values(), reverse=True)[0:5]) # Result is [434821, 968, 459, 313, 211]
     
     
