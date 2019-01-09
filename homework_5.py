@@ -7,20 +7,39 @@ class MinHeap:
         self.data = [] # a list to store data
         self.size = 0  # size of the heap
 
+    def build_heap(self, input_list):
+        self.size = len(input_list)
+        self.data = input_list
+        index_first_leaf = (self.size - 1) // 2
+        for i in range(index_first_leaf, self.size):
+            self.min_heapify(i)
+
+    def min_heapify(self, index):
+        index_par = (index - 1) // 2
+        while self.data[index] < self.data[index_par]:
+            temp = self.data[index]
+            self.data[index] = self.data[index_par]
+            self.data[index_par] = temp
+            index = index_par
+            index_par = max(0, (index - 1) // 2)
+    
+    def max_heapify(self, index):
+        index_child = self.small_child(index)
+        while self.data[index] > self.data[index_child]:
+            temp = self.data[index]
+            self.data[index] = self.data[index_child]
+            self.data[index_child] = temp
+            index = index_child
+            if 2 * index + 1 < self.size:
+                index_child = self.small_child(index)
+
     def insert(self, obj):
         self.data.append(obj)
         self.size += 1
         if self.size > 1:
             index_new = self.size - 1 # the index of the new object
-            index_par = (index_new - 1) // 2 # the index of its direct parent
-        
-            # a while loop swapping parent-child position if child < parent
-            while self.data[index_new] < self.data[index_par]:
-                temp = self.data[index_new]
-                self.data[index_new] = self.data[index_par]
-                self.data[index_par] = temp
-                index_new = index_par
-                index_par = max(0, (index_new - 1) // 2)
+            self.min_heapify(index_new)
+            
     
     def small_child(self, i):
         '''
@@ -41,14 +60,7 @@ class MinHeap:
         self.size -= 1
         index_par = 0
         if self.size > 1:
-            index_child = self.small_child(index_par)
-            while self.data[index_par] > self.data[index_child]:
-                temp = self.data[index_par]
-                self.data[index_par] = self.data[index_child]
-                self.data[index_child] = temp
-                index_par = index_child
-                if 2 * index_par + 1 < self.size:
-                    index_child = self.small_child(index_par)
+            self.max_heapify(index_par)
         return retval
 
 if __name__ == "__main__":
@@ -63,5 +75,13 @@ if __name__ == "__main__":
         heap_min = min_heap.extract_min()
         print('extracted {} from heap.'.format(heap_min))
         print('remaining heap {}.'.format(min_heap.data))
+    
+    new_min_heap = MinHeap()
+    new_min_heap.build_heap(list_to_heap)
+    print(new_min_heap.data)
+    for _ in range(len(list_to_heap)):
+        heap_min = new_min_heap.extract_min()
+        print('extracted {} from heap.'.format(heap_min))
+        print('remaining heap {}.'.format(new_min_heap.data))
     
 
