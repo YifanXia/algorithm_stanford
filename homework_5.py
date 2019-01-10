@@ -11,8 +11,14 @@ class MinHeap:
         self.size = len(input_list)
         self.data = input_list
         index_first_leaf = (self.size - 1) // 2
-        for i in range(index_first_leaf, self.size):
-            self.min_heapify(i)
+        #for i in range(index_first_leaf, self.size):
+        #    self.min_heapify(i)
+        # for i in range(index_first_leaf):
+        #     self.max_heapify(i)
+        i = index_first_leaf
+        while i >= 0:
+            self.max_heapify(i)
+            i -= 1
 
     def min_heapify(self, index):
         index_par = (index - 1) // 2
@@ -65,7 +71,8 @@ class MinHeap:
 
 if __name__ == "__main__":
 
-    list_to_heap = [9, 4, 12, 9, 4, 4, 8, 11, 13]
+    #list_to_heap = [9, 4, 12, 9, 4, 4, 8, 11, 13]
+    list_to_heap = [10,9,8,7,6,1,2,3,4,5]
     min_heap = MinHeap()
     for i in list_to_heap:
         min_heap.insert(i)
