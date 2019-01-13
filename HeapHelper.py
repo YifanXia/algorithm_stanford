@@ -10,18 +10,20 @@ class MinHeap:
     def build_heap(self, input_list):
         self.size = len(input_list)
         self.data = input_list
-        index_first_leaf = (self.size - 1) // 2
+        print(self.size)
+        index_first_leaf = (self.size - 1 - 1) // 2
         #for i in range(index_first_leaf, self.size):
         #    self.min_heapify(i)
         # for i in range(index_first_leaf):
         #     self.max_heapify(i)
         i = index_first_leaf
-        while i >= 0:
+        while i >= 0 and self.size > 1:
+            print(i)
             self.max_heapify(i)
             i -= 1
 
     def min_heapify(self, index):
-        index_par = (index - 1) // 2
+        index_par = max(0, (index - 1) // 2)
         while self.data[index] < self.data[index_par]:
             temp = self.data[index]
             self.data[index] = self.data[index_par]
@@ -31,11 +33,15 @@ class MinHeap:
     
     def max_heapify(self, index):
         index_child = self.small_child(index)
+        print('current index:', index)
+        print('child index:', index_child)
+        print(self.data[index_child])
         while self.data[index] > self.data[index_child]:
             temp = self.data[index]
             self.data[index] = self.data[index_child]
             self.data[index_child] = temp
             index = index_child
+            #print(index)
             if 2 * index + 1 < self.size:
                 index_child = self.small_child(index)
 
@@ -69,10 +75,20 @@ class MinHeap:
             self.max_heapify(index_par)
         return retval
 
+    def delete(self, val):
+        assert val in self.data, 'Value {} does not exist in the heap.'.format(val)
+        self.data.remove(val)
+        print('size after removal:', len(self.data))
+        self.size -= 1
+        print('nez size:', self.size)
+        self.build_heap(self.data)
+
+
 if __name__ == "__main__":
 
     #list_to_heap = [9, 4, 12, 9, 4, 4, 8, 11, 13]
     list_to_heap = [10,9,8,7,6,1,2,3,4,5]
+    #list_to_heap = [10]
     min_heap = MinHeap()
     for i in list_to_heap:
         min_heap.insert(i)
