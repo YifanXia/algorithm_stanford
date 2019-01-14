@@ -10,7 +10,6 @@ class MinHeap:
     def build_heap(self, input_list):
         self.size = len(input_list)
         self.data = input_list
-        print(self.size)
         index_first_leaf = (self.size - 1 - 1) // 2
         #for i in range(index_first_leaf, self.size):
         #    self.min_heapify(i)
@@ -18,7 +17,6 @@ class MinHeap:
         #     self.max_heapify(i)
         i = index_first_leaf
         while i >= 0 and self.size > 1:
-            print(i)
             self.max_heapify(i)
             i -= 1
 
@@ -33,9 +31,6 @@ class MinHeap:
     
     def max_heapify(self, index):
         index_child = self.small_child(index)
-        print('current index:', index)
-        print('child index:', index_child)
-        print(self.data[index_child])
         while self.data[index] > self.data[index_child]:
             temp = self.data[index]
             self.data[index] = self.data[index_child]
@@ -78,9 +73,7 @@ class MinHeap:
     def delete(self, val):
         assert val in self.data, 'Value {} does not exist in the heap.'.format(val)
         self.data.remove(val)
-        print('size after removal:', len(self.data))
         self.size -= 1
-        print('nez size:', self.size)
         self.build_heap(self.data)
 
 
