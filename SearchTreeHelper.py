@@ -4,6 +4,7 @@ class Node:
         self._parent = None
         self._left_child = None
         self._right_child = None
+        self._tree_size = 1 # the size of the tree rooted at this node
 
     @property
     def key(self):
@@ -37,6 +38,13 @@ class Node:
     def right_child(self, node):
         self._right_child = node
 
+    @property
+    def tree_size(self):
+        return self._tree_size
+    
+    def tree_size_increment(self):
+        self._tree_size += 1
+
     def swap(self, node):
         temp_parent = node.parent
         temp_left_child = node.left_child
@@ -64,8 +72,8 @@ class Node:
         return self._parent == None
 
 class BinarySearchTree:
-    def __init__(self):
-        self._root = None
+    def __init__(self, root=None):
+        self._root = root
         self._size = 0
 
     @property
@@ -78,6 +86,7 @@ class BinarySearchTree:
             else:
                 next_node = self._root
                 while next_node:
+                    next_node.tree_size_increment()
                     if node.key <= next_node.key:
                         previous_node = next_node
                         next_node = previous_node.left_child
@@ -100,7 +109,7 @@ class BinarySearchTree:
             next_node = node
         assert next_node, "Tree is empty."
         while next_node:
-            retval = next_node.key
+            retval = next_node
             next_node = next_node.left_child
         return retval
 
@@ -111,7 +120,7 @@ class BinarySearchTree:
             next_node = node
         assert next_node, "Tree is empty."
         while next_node:
-            retval = next_node.key
+            retval = next_node
             next_node = next_node.right_child
         return retval
     
@@ -141,8 +150,36 @@ class BinarySearchTree:
                 print('The node has no predecessor.')
             return next_node
 
-    def delete(self, node):
-        pass
+    def delete(self, key):
+        node_to_delete = self.search(key)
+        if node_to_delete is None:
+            return
+        elif not node_to_delete.left_child and not node_to_delete.right_child:
+            if node_to_delete.is_left_child():
+                node_to_delete.parent.left_child = None
+            elif node_to_delete.is_right_child():
+                
+                node_to_delete.parent.right_child = None
+        elif node_to_delete.left_child and node_to_delete.right_child:
+            predecessor_node = self.predecessor(node_to_delete)
+            node_to_delete.swap(predecessor_node)
+            if predecessor_node.is_left_child():
+                predecessor_node.parent.left_child = None
+            elif predecessor_node.is_right_child():
+                predecessor_node.parent.right_child = None
+        elif node_to_delete.left_child and not node_to_delete.right_child:
+            if node_to_delete.is_left_child():
+                node_to_delete.parent.left_child = node_to_delete.left_child
+            elif node_to_delete.is_right_child():
+                node_to_delete.parent.right_child = node_to_delete.left_child
+        elif not node_to_delete.left_child and node_to_delete.right_child:
+            if node_to_delete.is_left_child():
+                node_to_delete.parent.left_child = node_to_delete.right_child
+            elif node_to_delete.is_right_child():
+                node_to_delete.parent.right_child = node_to_delete.right_child
+        
+        self._size -= 1
+            
 
 
 
@@ -153,9 +190,13 @@ if __name__ == "__main__":
     for v in test_list:
         node = Node(v)
         tree.insert(node)
-    print(tree.find_max())
-    print(tree.find_min())
+    print(tree.find_max().key)
+    print(tree.find_min().key)
     print(tree.predecessor(node))
+    tree.delete(7)
+    #print(noded.right_child)
+    print(tree.size)
+    print(tree.find_max().key)
     
 
 
