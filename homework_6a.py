@@ -7,7 +7,7 @@ def two_sum(set_of_numbers, target):
 if __name__ == "__main__":
     nums = set()
     print('Reading data...')
-    with open("c:/Users/yifan.xia/Documents/Perso/algo1-programming_prob-2sum.txt", 'r') as f:
+    with open("algo1-programming_prob-2sum.txt", 'r') as f:
         for line in f:
             nums.add(int(line))
     
@@ -16,6 +16,6 @@ if __name__ == "__main__":
     for t in range(-10000, 10001):
         #print(t)
         num_targets += two_sum(nums, t)
-        #if t % 100 == 0: print(num_targets)
+        if t % 100 == 0: print("Current target: {0}. {1} targets were found.".format(t, num_targets))
     
     print(num_targets)

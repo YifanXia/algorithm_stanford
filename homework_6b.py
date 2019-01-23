@@ -1,4 +1,4 @@
-from BalancedSearchTree import Node, BinarySearchTree
+from SearchTreeHelper import Node, BinarySearchTree
 
 if __name__ == '__main__':
 
