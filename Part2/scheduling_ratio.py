@@ -43,7 +43,7 @@ class Scheduler:
 
 if __name__ == "__main__":
 
-    tasks, number_of_tasks = Scheduler.read_input('Part2\jobs.txt')
+    tasks, number_of_tasks = Scheduler.read_input('Part2/jobs.txt')
     print("Number of tasks: ", number_of_tasks)
     sorted_tasks = Scheduler.sort_tasks(tasks)
     print("Sorting completed.")

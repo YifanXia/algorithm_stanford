@@ -26,7 +26,7 @@ class Scheduler:
     def sort_tasks(tasks: List[Task]) -> List[Task]:
         scores = dict()
         for task in tasks:
-            scores[task] = task.weight - task.length
+            scores[task] = (task.weight - task.length, task.weight)
         print("Scored computation finished.")
         sorted_scores = sorted(scores.items(), key = lambda task_score: task_score[1], reverse=True)
         return [task_score[0] for task_score in sorted_scores]
@@ -42,7 +42,7 @@ class Scheduler:
 
 if __name__ == "__main__":
 
-    tasks, number_of_tasks = Scheduler.read_input('Part2\jobs.txt')
+    tasks, number_of_tasks = Scheduler.read_input('Part2/jobs.txt')
     print("Number of tasks: ", number_of_tasks)
     sorted_tasks = Scheduler.sort_tasks(tasks)
     print("Sorting completed.")
