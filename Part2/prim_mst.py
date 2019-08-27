@@ -90,12 +90,10 @@ if __name__ == '__main__':
 
     graph = Graph()
     print('Reading input...')
-    graph.read_input('Part2\\edges.txt')
+    graph.read_input('Part2\\mst_tests\\test_prim_4.txt')
 
     total = prim_mst(graph)
     print(total)
-    #for edge in mst_edges:
-    #    print(edge)
 
 
 
