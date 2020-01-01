@@ -1,0 +1,2 @@
+class KnapsackFinder:
+    pass
