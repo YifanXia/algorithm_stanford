@@ -10,6 +10,15 @@ class AlignmentFinder:
         self.min_nw = self.find_min_NW(x_seq, y_seq)
     
     def find_min_NW(self, x_seq: str, y_seq: str) -> int:
+        """Return Needleman-Wunsch score of the optimal alignment of given sequences
+        
+        Arguments:
+            x_seq {str} -- Sequence X
+            y_seq {str} -- Sequence Y
+        
+        Returns:
+            int -- Optimal NW score
+        """
         current_key = (len(x_seq), len(y_seq))
         if current_key in self._cache:
             return self._cache[current_key]
