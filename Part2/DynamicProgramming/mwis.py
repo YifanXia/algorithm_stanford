@@ -4,11 +4,9 @@ class MWISFinder:
     
     @staticmethod
     def find_max_weights(vertices: Dict[int, float]) -> Dict[int, float]:
-        solution = {}
+        solution = {0: 0} # Base case 1
         for i in vertices:
-            if i == 0: # Base case 1
-                solution[i] = 0
-            elif i == 1: # Base case 2
+            if i == 1: # Base case 2
                 solution[i] = vertices[i]
             else: # Induction
                 solution[i] = max(
@@ -19,20 +17,20 @@ class MWISFinder:
     
     @staticmethod
     def reconstruct(max_weights: Dict[int, float]) -> Set[int]:
-        i = len(vertices) - 1
+        i = len(vertices)
         mwis = set()
         while i > 0:
             if max_weights[i] == max_weights[i - 1]:
                 i = i - 1
             else:
-                mwis.add(i + 1)
+                mwis.add(i)
                 i = i -2
         return mwis
         
     def find_mwis(self, vertices: Dict[int, float]) -> Tuple[float, Set[int]]:
         max_weights = self.find_max_weights(vertices)
         mwis = self.reconstruct(max_weights)
-        return max_weights[len(vertices) - 1], mwis
+        return max_weights[len(vertices)], mwis
     
 if __name__ == '__main__':
     
@@ -42,7 +40,7 @@ if __name__ == '__main__':
     ) as test_file:
         n = int(test_file.readline())
         vertices = {
-            i: int(test_file.readline()) for i in range(n)
+            i + 1: int(test_file.readline()) for i in range(n)
         }
     max_weight, mwis = MWISFinder().find_mwis(vertices)
     
