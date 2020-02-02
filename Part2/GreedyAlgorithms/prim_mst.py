@@ -90,7 +90,7 @@ if __name__ == '__main__':
 
     graph = Graph()
     print('Reading input...')
-    graph.read_input('Part2\\mst_tests\\test_prim_4.txt')
+    graph.read_input('C:/Users/Fenzhengrou/Documents/Algorithm_Stanford/algorithm_stanford/Part2/test_files/mst_tests/test_mst_5.txt')
 
     total = prim_mst(graph)
     print(total)
