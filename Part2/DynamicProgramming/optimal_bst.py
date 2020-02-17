@@ -43,7 +43,7 @@ def read_nodes(path: str) -> List[Node]:
 if __name__ == "__main__":
     
     optimal_bst_finder = BinarySearchTreeOptimizer()
-    nodes = read_nodes('C:/Users/Fenzhengrou/Documents/Algorithm_Stanford/algorithm_stanford/Part2/DynamicProgramming/optimal_bst_test')
+    nodes = read_nodes('Part2/DynamicProgramming/optimal_bst_test')
     min_search_time = optimal_bst_finder._iteratively_find_optimal_bst(nodes)
     
     print(min_search_time)

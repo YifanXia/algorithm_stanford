@@ -35,7 +35,7 @@ class MWISFinder:
 if __name__ == '__main__':
     
     with open(
-        'C:/Users/Fenzhengrou/Documents/Algorithm_Stanford/algorithm_stanford/Part2/DynamicProgramming/mwis_test_1',
+        'Part2/DynamicProgramming/mwis_test_1',
         'r'
     ) as test_file:
         n = int(test_file.readline())

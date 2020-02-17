@@ -109,7 +109,7 @@ class KruskalSolver:
 
 if __name__ == "__main__":
     
-    GRAPH_PATH = 'C:/Users/Fenzhengrou/Documents/Algorithm_Stanford/algorithm_stanford/Part2/test_files/mst_tests/test_mst_5.txt'
+    GRAPH_PATH = 'Part2/test_files/mst_tests/test_mst_5.txt'
     graph = Graph.from_file(GRAPH_PATH)
     kruskal_solver = KruskalSolver(graph)
     kruskal_solver.run_kruskal()

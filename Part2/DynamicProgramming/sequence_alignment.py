@@ -43,7 +43,7 @@ if __name__ == "__main__":
     
     sys.setrecursionlimit(3000)
     with open(
-        'C:/Users/Fenzhengrou/Documents/Algorithm_Stanford/algorithm_stanford/Part2/DynamicProgramming/alignment_test',
+        'Part2/DynamicProgramming/alignment_test',
         'r'
     ) as test_file:
         length_x, length_y = [int(n) for n in test_file.readline().split()]

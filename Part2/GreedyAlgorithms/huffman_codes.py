@@ -51,7 +51,7 @@ class HuffmanEncoder:
 
 if __name__ == "__main__":
     
-    PATH = 'C:/Users/Fenzhengrou/Documents/Algorithm_Stanford/algorithm_stanford/Part2/GreedyAlgorithms/huffman_test_3'
+    PATH = 'Part2/GreedyAlgorithms/huffman_test_3'
     forest = get_initial_forest(PATH)
     
     huffman_encoder = HuffmanEncoder(forest)

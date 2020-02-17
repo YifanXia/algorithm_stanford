@@ -62,7 +62,7 @@ if __name__ == "__main__":
     
     sys.setrecursionlimit(3000)
     with open(
-        'C:/Users/Fenzhengrou/Documents/Algorithm_Stanford/algorithm_stanford/Part2/DynamicProgramming/knapsack_test_2',
+        'Part2/DynamicProgramming/knapsack_test_2',
         'r'
     ) as test_file:
         knapsack_capacity, items_number = [int(x) for x in test_file.readline().split()]
