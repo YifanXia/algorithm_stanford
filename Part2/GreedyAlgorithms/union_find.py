@@ -34,7 +34,8 @@ class Graph:
         nodes = []
         edges = []
         with open(path, 'r') as f:
-            num_nodes, _ = [int(n) for n in f.readline().split()]
+            #num_nodes, _ = [int(n) for n in f.readline().split()]
+            num_nodes = [int(n) for n in f.readline().split()][0]
             nodes = [Node(i + 1) for i in range(num_nodes)]
             line = f.readline()
             while line:
